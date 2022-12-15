@@ -1,11 +1,9 @@
-import {describe, expect, test} from '@jest/globals';
+import { buildClient } from 'scroll-api-sdk';
+const sum = (x, y) => 3;
 
-function sum(a, b) {
-  return 3;
-}
-
-describe('sum module', () => {
-  test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
+describe('feed', () => {
+  it('retrieves feed items', () => {
+    const client = buildClient();
+    expect(client.getFeedItems({}).nextPage).toEqual('todo');
   });
 });
