@@ -1,6 +1,6 @@
 import { buildClient } from 'scroll-api-sdk';
 
-describe('feed', () => {
+describe('Feed', () => {
   it('retrieves feed items', async () => {
     const client = buildClient({ timeProvider: () => 1650000000 });
     const results = [];
