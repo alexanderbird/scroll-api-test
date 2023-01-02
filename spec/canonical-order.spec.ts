@@ -1,8 +1,12 @@
 import { buildClient } from 'scroll-api-sdk';
 
 describe('Canonical Order', () => {
+  function buildTestClient() {
+    return buildClient({ timeProvider: () => 0, httpGet: () => null as any, log: () => {} });
+  }
+
   it('retrieves items with id prefix', async () => {
-    const client = buildClient({ timeProvider: () => 0 });
+    const client = buildTestClient();
     const results = [];
     let nextPage;
     do {
@@ -20,7 +24,7 @@ describe('Canonical Order', () => {
   });
 
   it('retrieves items with id prefix in reverse order', async () => {
-    const client = buildClient({ timeProvider: () => 0 });
+    const client = buildTestClient();
     const results = [];
     let nextPage;
     do {

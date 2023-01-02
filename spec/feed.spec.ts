@@ -1,8 +1,9 @@
-import { buildClient } from 'scroll-api-sdk';
+import { buildClient, wrapFetch } from 'scroll-api-sdk';
+import fetch from 'node-fetch';
 
 describe('Feed', () => {
   it('retrieves feed items', async () => {
-    const client = buildClient({ timeProvider: () => 1650000000 });
+    const client = buildClient({ timeProvider: () => 1650000000, httpGet: wrapFetch(fetch), log: console.info });
     const results = [];
     let nextPage;
     for (let i = 0; i < 6; i++) {
