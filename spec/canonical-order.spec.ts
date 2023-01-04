@@ -7,7 +7,7 @@ describe('Canonical Order', () => {
   }
 
   it('retrieves items with id prefix', async () => {
-    const client = buildTestClient(true);
+    const client = buildTestClient();
     const results = [];
     let nextPage;
     do {
