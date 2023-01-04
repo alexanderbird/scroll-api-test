@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 
 describe('Feed', () => {
   it('retrieves feed items', async () => {
-    const client = buildClient({ timeProvider: () => 1650000000, httpGet: wrapFetch(fetch), log: console.info });
+    const client = buildClient({ timeProvider: () => 1650000000, httpGet: wrapFetch(fetch), log: () => {} });
     const results = [];
     let nextPage;
     for (let i = 0; i < 6; i++) {

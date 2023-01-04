@@ -1,12 +1,13 @@
-import { buildClient } from 'scroll-api-sdk';
+import { buildClient, wrapFetch } from 'scroll-api-sdk';
+import fetch from 'node-fetch';
 
 describe('Canonical Order', () => {
-  function buildTestClient() {
-    return buildClient({ timeProvider: () => 0, httpGet: () => null as any, log: () => {} });
+  function buildTestClient(doLog?: boolean) {
+    return buildClient({ timeProvider: () => 0, httpGet: wrapFetch(fetch), log: doLog ? console.info : () => {} });
   }
 
   it('retrieves items with id prefix', async () => {
-    const client = buildTestClient();
+    const client = buildTestClient(true);
     const results = [];
     let nextPage;
     do {
