@@ -6,5 +6,6 @@ module.exports = {
   },
   transformIgnorePatterns: [
     "node_modules/(?!node-fetch)/"
-  ]
+  ],
+  setupFilesAfterEnv: ['./jest.setup.js']
 };
