@@ -5,9 +5,6 @@ describe('Verses', () => {
   it('retrieves a single verse by id', async () => {
     const client = buildClient({ timeProvider: () => 0, httpGet: wrapFetch(fetch), log: () => {} });
     const result = await client.getVerses({
-      language: 'en',
-      translation: 'web-strongs',
-      document: 'bible',
       ids: [ '65-001-015' ]
     });
     expect(result.verses.map(x => x.data.map(y => y.t).join(' '))).toEqual([someSpecificVerses["65-001-015"]]);
@@ -16,9 +13,6 @@ describe('Verses', () => {
   it('retrieves verses by id', async () => {
     const client = buildClient({ timeProvider: () => 0, httpGet: wrapFetch(fetch), log: () => {} });
     const result = await client.getVerses({
-      language: 'en',
-      translation: 'web-strongs',
-      document: 'bible',
       ids: [ '65-001-015', '65-001-018', '65-001-011', '65-001-010' ]
     });
     const actual = {};
